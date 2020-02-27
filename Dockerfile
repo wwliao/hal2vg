@@ -6,6 +6,10 @@ FROM quay.io/vgteam/vg:v1.17.0-0-gaa0b37860-t315-build
 # update system and install dependencies not present in vg image
 RUN apt-get -qq update && apt-get -qq install -y libhdf5-serial-dev
 
+RUN apt-get update && \
+ apt-get upgrade -y && \
+ apt-get install -y --no-install-recommends libnss-sss
+
 # copy current directory to docker
 ADD . /hal2vg
 
